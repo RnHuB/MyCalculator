@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        #calculator {
+            width: 300px;
+            height: 400px;
+            border: 2px solid;
+        }
+
+        #screen {
+            width: 90%;
+            height: 50px;
+            border: 1px solid;
+            margin: 10px;
+        }
+        
+        #buttonContent {
+            width: 100%;
+            margin-left: 5px;
+        }
+
+        .button {
+            float: left;
+            background-color: grey;
+            margin: 5px;
+            border: 1px solid;
+            padding: 10px;
+            width: 13%;
+            height: 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #input {
+            width: 100%;
+            height: 100%;
+            font-size: 30px;
+        }
+
+        .button:hover {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div id='calculator'>
+        <div id='screen'>
+                <input id='input' type='text' placeholder="0" />
+        </div>
+        <div><h3 style='text-align: center;'>Calculator</h3></div>
+        <div id='buttonContent'>
+            <div class='button' onclick='reset()'>AC</div>
+            <div class='button' onclick='backspace()'>&#8592</div>
+            <div class='button' onclick='showChar(this.innerText)'>+/-</div>
+            <div class='button' onclick='showChar(this.innerText)'>/</div>
+        </div>
+        <div id='buttonContent'>
+                <div class='button' onclick='showChar(this.innerText)'>1</div>
+                <div class='button' onclick='showChar(this.innerText)'>2</div>
+                <div class='button' onclick='showChar(this.innerText)'>3</div>
+                <div class='button' onclick='showChar(this.innerText)'>/</div>
+        </div>
+        <div id='buttonContent'>
+                <div class='button' onclick='showChar(this.innerText)'>4</div>
+                <div class='button' onclick='showChar(this.innerText)'>5</div>
+                <div class='button' onclick='showChar(this.innerText)'>6</div>
+                <div class='button' onclick='showChar("*")'>x</div>
+        </div>
+        <div id='buttonContent'>
+                <div class='button' onclick='showChar(this.innerText)'>7</div>
+                <div class='button' onclick='showChar(this.innerText)'>8</div>
+                <div class='button' onclick='showChar(this.innerText)'>9</div>
+                <div class='button' onclick='showChar(this.innerText)'>+</div>
+        </div>
+        <div id='buttonContent'>
+                <div class='button' onclick='showChar(this.innerText)'>%</div>
+                <div class='button' onclick='showChar(this.innerText)'>0</div>
+                <div class='button' onclick='calculate()'>=</div>
+                <div class='button' onclick='showChar(this.innerText)'>-</div>
+        </div>
+    </div>
+    
+    <script>
+        var input = document.getElementById('input');
+        function showChar(char) {
+            input.value += char;
+        }
+
+        function calculate() {
+            input.value=eval(input.value);
+        }
+
+        function backspace() {
+            var exprEle = document.getElementById("input");
+            exprEle.value = exprEle.value.slice(0, exprEle.value.length - 1);
+        }
+
+        function reset() {
+            var exprElement = document.getElementById("input");
+            exprElement.value = exprElement.value.slice(0, exprElement.length - 1);
+        }
+
+    </script>
+</body>
+</html>
